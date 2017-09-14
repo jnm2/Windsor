@@ -38,6 +38,11 @@ namespace Castle.MicroKernel
 		HandlerState CurrentState { get; }
 
 		/// <summary>
+		///   Gets a snapshot of the missing dependencies
+		/// </summary>
+		DependencyModel[] MissingDependencies { get; }
+
+		/// <summary>
 		///   Initializes the handler with a reference to the
 		///   kernel.
 		/// </summary>

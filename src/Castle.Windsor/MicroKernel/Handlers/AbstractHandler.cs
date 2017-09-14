@@ -76,6 +76,8 @@ namespace Castle.MicroKernel.Handlers
 			get { return state; }
 		}
 
+		public DependencyModel[] MissingDependencies => missingDependencies?.ToArray();
+
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		protected IKernelInternal Kernel
 		{

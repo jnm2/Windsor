@@ -57,6 +57,14 @@ namespace Castle.MicroKernel.Handlers
 			get { return parentHandler.CurrentState; }
 		}
 
+		public DependencyModel[] MissingDependencies
+		{
+			get
+			{
+				throw new NotImplementedException("Missing dependencies in parent/child containers are not support.");	
+			}
+		}
+
 		public void Dispose()
 		{
 			Dispose(true);
