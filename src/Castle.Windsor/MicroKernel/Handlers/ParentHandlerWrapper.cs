@@ -61,7 +61,7 @@ namespace Castle.MicroKernel.Handlers
 		{
 			get
 			{
-				throw new NotImplementedException("Missing dependencies in parent/child containers are not support.");	
+				throw new NotImplementedException("Missing dependencies in parent/child containers are not supported.");	
 			}
 		}
 

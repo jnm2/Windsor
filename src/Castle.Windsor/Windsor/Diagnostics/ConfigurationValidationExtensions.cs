@@ -20,7 +20,7 @@ namespace Castle.Windsor.Diagnostics
 	using Castle.Core;
 	using Castle.MicroKernel;
 
-	public static class ConfigurationValidationExtensionsExtensions
+	public static class ConfigurationValidationExtensions
 	{
 		public static IReadOnlyCollection<(DependencyModel dependency, IHandler handler)> GetUnresolvableDependencies(this IWindsorContainer container)
 		{
