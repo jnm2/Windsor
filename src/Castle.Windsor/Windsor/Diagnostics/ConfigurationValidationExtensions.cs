@@ -17,26 +17,23 @@ namespace Castle.Windsor.Diagnostics
 	using System.Collections.Generic;
 	using System.Linq;
 
-	using Castle.Core;
-	using Castle.MicroKernel;
-
 	public static class ConfigurationValidationExtensions
 	{
-		public static IReadOnlyCollection<(DependencyModel dependency, IHandler handler)> GetUnresolvableDependencies(this IWindsorContainer container)
+		public static IReadOnlyCollection<ServiceValidationInfo> GetValidationInfo(this IWindsorContainer container)
 		{
-			var unresolvables = new List<(DependencyModel dependency, IHandler handler)>();
-			var allHandlers = container.Kernel.GetAssignableHandlers(typeof(object)).ToList();
-			var waitingHandlers = allHandlers.FindAll(handler => handler.CurrentState == HandlerState.WaitingDependency);
+			var info = new List<ServiceValidationInfo>();
 
-			foreach (var waitingHandler in waitingHandlers)
+			var registeredHandlers = container.Kernel.GetAssignableHandlers(typeof(object)).ToList();
+
+			foreach (var waitingHandler in registeredHandlers)
 			{
 				foreach (var dependency in waitingHandler.MissingDependencies)
 				{
-					unresolvables.Add((dependency, waitingHandler));
+
 				}
 			}
 
-			return unresolvables.AsReadOnly();
+			return info;
 		}
 	}
 }
